@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de Data URIs SVG</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .output { background: #f5f5f5; padding: 10px; margin: 10px 0; border-radius: 5px; }
+        button { background: #007bff; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; margin: 5px; }
+        button:hover { background: #0056b3; }
+        textarea { width: 100%; height: 200px; font-family: monospace; }
+    </style>
+</head>
+<body>
+    <h1>Generador de Data URIs SVG para Episodios</h1>
+    <button onclick="generateDataURIs()">Generar Data URIs</button>
+    <button onclick="generateHTMLReplacement()">Generar Código HTML</button>
+    
+    <div id="output"></div>
+    
+    <script>
+        function createSVGDataURI(season, episode) {
+            const colors = ['FF6B23', 'F7931E', 'FFCC02', '8E44AD', 'E74C3C', '2ECC71'];
+            const bgColor = colors[episode % colors.length];
+            
+            const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="400" height="225" viewBox="0 0 400 225">
+                <defs>
+                    <linearGradient id="grad${season}${episode}" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#${bgColor}"/>
+                        <stop offset="100%" stop-color="#2C3E50"/>
+                    </linearGradient>
+                </defs>
+                <rect width="400" height="225" fill="url(#grad${season}${episode})"/>
+                <text x="200" y="100" font-family="Arial" font-size="48" font-weight="bold" text-anchor="middle" fill="white">S${season}E${episode}</text>
+                <text x="200" y="140" font-family="Arial" font-size="16" font-weight="bold" text-anchor="middle" fill="white">The Big Bang Theory</text>
+                <text x="200" y="180" font-family="Arial" font-size="12" text-anchor="middle" fill="rgba(255,255,255,0.8)">Episodio ${episode}</text>
+            </svg>`;
+            
+            return 'data:image/svg+xml;base64,' + btoa(svg);
+        }
+        
+        function generateDataURIs() {
+            let output = '<h2>Data URIs Generados</h2>';
+            output += '<textarea id="dataUris">';
+            
+            // Temporada 1
+            for (let ep = 1; ep <= 17; ep++) {
+                const dataURI = createSVGDataURI(1, ep);
+                output += `s1e${ep}: "${dataURI}",\n`;
+            }
+            
+            // Temporada 2
+            for (let ep = 1; ep <= 23; ep++) {
+                const dataURI = createSVGDataURI(2, ep);
+                output += `s2e${ep}: "${dataURI}",\n`;
+            }
+            
+            output += '</textarea>';
+            document.getElementById('output').innerHTML = output;
+        }
+        
+        function generateHTMLReplacement() {
+            let output = '<h2>Reemplazos HTML</h2>';
+            output += '<p>Copia este código JavaScript y ejecútalo en la consola del navegador:</p>';
+            output += '<textarea>';
+            
+            output += `
+// Reemplazo directo de imágenes
+const imageReplacements = {
+`;
+            
+            // Temporada 1
+            for (let ep = 1; ep <= 17; ep++) {
+                const dataURI = createSVGDataURI(1, ep);
+                output += `    's1e${ep}.jpg': '${dataURI}',\n`;
+            }
+            
+            // Temporada 2
+            for (let ep = 1; ep <= 23; ep++) {
+                const dataURI = createSVGDataURI(2, ep);
+                output += `    's2e${ep}.jpg': '${dataURI}',\n`;
+            }
+            
+            output += `};
+
+// Aplicar reemplazos
+document.querySelectorAll('img[src*="episodes/"]').forEach(img => {
+    const filename = img.src.split('/').pop();
+    if (imageReplacements[filename]) {
+        img.src = imageReplacements[filename];
+        console.log('Reemplazada:', filename);
+    }
+});
+
+console.log('Reemplazo completado para', Object.keys(imageReplacements).length, 'imágenes');
+`;
+            
+            output += '</textarea>';
+            document.getElementById('output').innerHTML = output;
+        }
+    </script>
+</body>
+</html>
+
+
+

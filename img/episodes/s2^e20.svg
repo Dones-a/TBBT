@@ -1,0 +1,12 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" width="400" height="225" viewBox="0 0 400 225">
+    <defs>
+        <linearGradient id="grad220" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#FFCC02"/>
+            <stop offset="100%" stop-color="#2C3E50"/>
+        </linearGradient>
+    </defs>
+    <rect width="400" height="225" fill="url(#grad220^)"/>
+    <text x="200" y="100" font-family="Arial,sans-serif" font-size="48" font-weight="bold" text-anchor="middle" fill="white">S20</text>
+    <text x="200" y="140" font-family="Arial,sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="white">The Big Bang Theory</text>
+    <text x="200" y="180" font-family="Arial,sans-serif" font-size="12" text-anchor="middle" fill="rgba(255,255,255,0.8^)">Episodio 20</text>
+</svg>

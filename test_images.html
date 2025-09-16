@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test de Imágenes de Episodios</title>
+    <style>
+        .test-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 20px;
+        }
+        .test-image {
+            border: 2px solid #ccc;
+            padding: 10px;
+            text-align: center;
+        }
+        .test-image img {
+            width: 200px;
+            height: 113px;
+            object-fit: cover;
+            border: 1px solid #ddd;
+        }
+        .error {
+            color: red;
+            background: #ffe6e6;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid red;
+        }
+        .success {
+            color: green;
+            background: #e6ffe6;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid green;
+        }
+    </style>
+</head>
+<body>
+    <h1>Test de Imágenes de Episodios - The Big Bang Theory</h1>
+    
+    <h2>Prueba de Rutas de Imágenes</h2>
+    
+    <div class="test-container">
+        <div class="test-image">
+            <h3>S1E1 (Ruta relativa)</h3>
+            <img src="img/episodes/s1e1.jpg" alt="S1E1" onerror="this.parentElement.classList.add('error'); this.style.display='none';" onload="this.parentElement.classList.add('success');">
+            <p>img/episodes/s1e1.jpg</p>
+        </div>
+        
+        <div class="test-image">
+            <h3>S1E2 (Ruta relativa)</h3>
+            <img src="img/episodes/s1e2.jpg" alt="S1E2" onerror="this.parentElement.classList.add('error'); this.style.display='none';" onload="this.parentElement.classList.add('success');">
+            <p>img/episodes/s1e2.jpg</p>
+        </div>
+        
+        <div class="test-image">
+            <h3>S2E1 (Ruta relativa)</h3>
+            <img src="img/episodes/s2e1.jpg" alt="S2E1" onerror="this.parentElement.classList.add('error'); this.style.display='none';" onload="this.parentElement.classList.add('success');">
+            <p>img/episodes/s2e1.jpg</p>
+        </div>
+        
+        <div class="test-image">
+            <h3>S1E1 (Ruta absoluta)</h3>
+            <img src="./img/episodes/s1e1.jpg" alt="S1E1 Absoluta" onerror="this.parentElement.classList.add('error'); this.style.display='none';" onload="this.parentElement.classList.add('success');">
+            <p>./img/episodes/s1e1.jpg</p>
+        </div>
+    </div>
+    
+    <h2>Información de Debug</h2>
+    <div id="debug-info">
+        <p><strong>URL actual:</strong> <span id="current-url"></span></p>
+        <p><strong>Directorio base:</strong> <span id="base-dir"></span></p>
+        <p><strong>Protocolo:</strong> <span id="protocol"></span></p>
+    </div>
+    
+    <h2>Test de Carga de Imagen Manual</h2>
+    <button onclick="testImageLoad()">Probar Carga de S1E1</button>
+    <div id="manual-test-result"></div>
+    
+    <script>
+        // Mostrar información de debug
+        document.getElementById('current-url').textContent = window.location.href;
+        document.getElementById('base-dir').textContent = window.location.pathname;
+        document.getElementById('protocol').textContent = window.location.protocol;
+        
+        function testImageLoad() {
+            const img = new Image();
+            const resultDiv = document.getElementById('manual-test-result');
+            
+            img.onload = function() {
+                resultDiv.innerHTML = '<div class="success">✅ Imagen S1E1 cargada correctamente!</div>';
+            };
+            
+            img.onerror = function() {
+                resultDiv.innerHTML = '<div class="error">❌ Error al cargar S1E1. Revisar ruta o permisos.</div>';
+            };
+            
+            img.src = 'img/episodes/s1e1.jpg';
+        }
+        
+        // Auto-test al cargar la página
+        setTimeout(function() {
+            const images = document.querySelectorAll('.test-image img');
+            let loadedCount = 0;
+            let errorCount = 0;
+            
+            images.forEach(function(img) {
+                if (img.complete) {
+                    if (img.naturalWidth > 0) {
+                        loadedCount++;
+                    } else {
+                        errorCount++;
+                    }
+                }
+            });
+            
+            console.log('Imágenes cargadas:', loadedCount);
+            console.log('Imágenes con error:', errorCount);
+        }, 2000);
+    </script>
+</body>
+</html>
+

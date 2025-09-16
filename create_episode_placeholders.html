@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de Placeholders para Episodios</title>
+    <style>
+        .placeholder {
+            width: 400px;
+            height: 225px;
+            background: linear-gradient(135deg, #FF6B23, #F7931E);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Arial', sans-serif;
+            font-weight: bold;
+            text-align: center;
+            margin: 10px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+        .episode-number {
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+        .episode-title {
+            font-size: 14px;
+            max-width: 90%;
+            line-height: 1.2;
+        }
+        .download-btn {
+            background: #28a745;
+            color: white;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 5px;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Placeholders de Episodios - The Big Bang Theory</h1>
+    <p>Haz clic derecho en cada imagen y selecciona "Guardar imagen como..." para descargar</p>
+    
+    <h2>Temporada 1</h2>
+    <div class="container" id="season1"></div>
+    
+    <h2>Temporada 2</h2>
+    <div class="container" id="season2"></div>
+
+    <script>
+        // Datos de episodios
+        const season1 = [
+            "Pilot", "The Big Bran Hypothesis", "The Fuzzy Boots Corollary", 
+            "The Luminous Fish Effect", "The Hamburger Postulate", "The Middle Earth Paradigm",
+            "The Dumpling Paradox", "The Grasshopper Experiment", "The Cooper-Hofstadter Polarization",
+            "The Loobenfeld Decay", "The Pancake Batter Anomaly", "The Jerusalem Duality",
+            "The Bat Jar Conjecture", "The Nerdvana Annihilation", "The Pork Chop Indeterminacy",
+            "The Peanut Reaction", "The Tangerine Factor"
+        ];
+
+        const season2 = [
+            "The Bad Fish Paradigm", "The Codpiece Topology", "The Barbarian Sublimation",
+            "The Griffin Equivalency", "The Euclid Alternative", "The Cooper-Nowitzki Theorem",
+            "The Panty Piñata Polarization", "The Lizard-Spock Expansion", "The White Asparagus Triangulation",
+            "The Vartabedian Conundrum", "The Bath Item Gift Hypothesis", "The Killer Robot Instability",
+            "The Friendship Algorithm", "The Financial Permeability", "The Maternal Capacitance",
+            "The Cushion Saturation", "The Terminator Decoupling", "The Work Song Nanocluster",
+            "The Dead Hooker Juxtaposition", "The Hofstadter Isotope", "The Vegas Renormalization",
+            "The Classified Materials Turbulence", "The Monopolar Expedition"
+        ];
+
+        function createPlaceholder(season, episode, title) {
+            const div = document.createElement('div');
+            div.className = 'placeholder';
+            div.innerHTML = `
+                <div class="episode-number">S${season}E${episode}</div>
+                <div class="episode-title">${title}</div>
+                <button class="download-btn" onclick="downloadPlaceholder(${season}, ${episode}, '${title}')">Descargar</button>
+            `;
+            return div;
+        }
+
+        function downloadPlaceholder(season, episode, title) {
+            const canvas = document.createElement('canvas');
+            canvas.width = 400;
+            canvas.height = 225;
+            const ctx = canvas.getContext('2d');
+            
+            // Gradiente de fondo
+            const gradient = ctx.createLinearGradient(0, 0, 400, 225);
+            gradient.addColorStop(0, '#FF6B23');
+            gradient.addColorStop(1, '#F7931E');
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, 400, 225);
+            
+            // Texto
+            ctx.fillStyle = 'white';
+            ctx.textAlign = 'center';
+            ctx.font = 'bold 48px Arial';
+            ctx.fillText(`S${season}E${episode}`, 200, 100);
+            
+            ctx.font = 'bold 14px Arial';
+            const words = title.split(' ');
+            let line = '';
+            let y = 140;
+            for (let word of words) {
+                const testLine = line + word + ' ';
+                const metrics = ctx.measureText(testLine);
+                if (metrics.width > 360 && line !== '') {
+                    ctx.fillText(line, 200, y);
+                    line = word + ' ';
+                    y += 18;
+                } else {
+                    line = testLine;
+                }
+            }
+            ctx.fillText(line, 200, y);
+            
+            // Descargar
+            const link = document.createElement('a');
+            link.download = `s${season}e${episode}.jpg`;
+            link.href = canvas.toDataURL('image/jpeg', 0.9);
+            link.click();
+        }
+
+        // Generar placeholders
+        season1.forEach((title, index) => {
+            document.getElementById('season1').appendChild(createPlaceholder(1, index + 1, title));
+        });
+
+        season2.forEach((title, index) => {
+            document.getElementById('season2').appendChild(createPlaceholder(2, index + 1, title));
+        });
+    </script>
+</body>
+</html>
+

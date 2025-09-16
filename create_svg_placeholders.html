@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de Placeholders SVG</title>
+    <style>
+        .placeholder-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 20px;
+        }
+        .placeholder {
+            text-align: center;
+        }
+        svg {
+            border: 1px solid #ddd;
+        }
+        button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Generador de Placeholders SVG - The Big Bang Theory</h1>
+    <p>Haz clic en "Generar SVG" para crear imágenes placeholder válidas.</p>
+    
+    <button onclick="generateAllSVGs()">Generar Todos los SVGs de Temporada 1 y 2</button>
+    <button onclick="clearContainer()">Limpiar</button>
+    
+    <div id="svg-container" class="placeholder-container"></div>
+    
+    <script>
+        function createEpisodeSVG(season, episode, title) {
+            const colors = ['#FF6B23', '#F7931E', '#FFCC02', '#8E44AD', '#E74C3C', '#2ECC71'];
+            const bgColor = colors[episode % colors.length];
+            
+            const svg = `
+                <svg width="400" height="225" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="grad${season}${episode}" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:${bgColor};stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#2C3E50;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                    <rect width="400" height="225" fill="url(#grad${season}${episode})"/>
+                    <text x="200" y="100" font-family="Arial, sans-serif" font-size="48" font-weight="bold" 
+                          text-anchor="middle" fill="white">S${season}E${episode}</text>
+                    <text x="200" y="140" font-family="Arial, sans-serif" font-size="14" font-weight="bold" 
+                          text-anchor="middle" fill="white">${title}</text>
+                    <text x="200" y="200" font-family="Arial, sans-serif" font-size="12" 
+                          text-anchor="middle" fill="rgba(255,255,255,0.8)">The Big Bang Theory</text>
+                </svg>
+            `;
+            
+            return svg;
+        }
+        
+        function downloadSVG(content, filename) {
+            const blob = new Blob([content], { type: 'image/svg+xml' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = filename;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+        
+        function generateAllSVGs() {
+            const container = document.getElementById('svg-container');
+            
+            // Episodios de Temporada 1
+            const season1Episodes = [
+                "Pilot", "The Big Bran Hypothesis", "The Fuzzy Boots Corollary", 
+                "The Luminous Fish Effect", "The Hamburger Postulate", "The Middle Earth Paradigm",
+                "The Dumpling Paradox", "The Grasshopper Experiment", "The Cooper-Hofstadter Polarization",
+                "The Loobenfeld Decay", "The Pancake Batter Anomaly", "The Jerusalem Duality",
+                "The Bat Jar Conjecture", "The Nerdvana Annihilation", "The Pork Chop Indeterminacy",
+                "The Peanut Reaction", "The Tangerine Factor"
+            ];
+            
+            // Episodios de Temporada 2
+            const season2Episodes = [
+                "The Bad Fish Paradigm", "The Codpiece Topology", "The Barbarian Sublimation",
+                "The Griffin Equivalency", "The Euclid Alternative", "The Cooper-Nowitzki Theorem",
+                "The Panty Piñata Polarization", "The Lizard-Spock Expansion", "The White Asparagus Triangulation",
+                "The Vartabedian Conundrum", "The Bath Item Gift Hypothesis", "The Killer Robot Instability",
+                "The Friendship Algorithm", "The Financial Permeability", "The Maternal Capacitance",
+                "The Cushion Saturation", "The Terminator Decoupling", "The Work Song Nanocluster",
+                "The Dead Hooker Juxtaposition", "The Hofstadter Isotope", "The Vegas Renormalization",
+                "The Classified Materials Turbulence", "The Monopolar Expedition"
+            ];
+            
+            // Generar Temporada 1
+            season1Episodes.forEach((title, index) => {
+                const episode = index + 1;
+                const shortTitle = title.length > 25 ? title.substring(0, 22) + '...' : title;
+                const svg = createEpisodeSVG(1, episode, shortTitle);
+                
+                const div = document.createElement('div');
+                div.className = 'placeholder';
+                div.innerHTML = `
+                    ${svg}
+                    <br>
+                    <button onclick="downloadSVG(\`${svg.replace(/`/g, '\\`')}\`, 's1e${episode}.svg')">
+                        Descargar S1E${episode}
+                    </button>
+                `;
+                container.appendChild(div);
+            });
+            
+            // Generar Temporada 2
+            season2Episodes.forEach((title, index) => {
+                const episode = index + 1;
+                const shortTitle = title.length > 25 ? title.substring(0, 22) + '...' : title;
+                const svg = createEpisodeSVG(2, episode, shortTitle);
+                
+                const div = document.createElement('div');
+                div.className = 'placeholder';
+                div.innerHTML = `
+                    ${svg}
+                    <br>
+                    <button onclick="downloadSVG(\`${svg.replace(/`/g, '\\`')}\`, 's2e${episode}.svg')">
+                        Descargar S2E${episode}
+                    </button>
+                `;
+                container.appendChild(div);
+            });
+        }
+        
+        function clearContainer() {
+            document.getElementById('svg-container').innerHTML = '';
+        }
+    </script>
+</body>
+</html>
+

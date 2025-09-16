@@ -1,0 +1,1084 @@
+/* Importar Font Awesome para iconos de redes sociales */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+/* Variables CSS para la paleta de colores - MODO OSCURO */
+:root {
+    --primary-yellow: #ffcc02;
+    --primary-orange: #f7931e;
+    --primary-red-orange: #ff6b35;
+    --text-dark: #ffffff;
+    --text-light: #ffffff;
+    --text-secondary: #b0b0b0;
+    --background-dark: #000000;
+    --background-card: #1e1e1e;
+    --background-secondary: #2a2a2a;
+    --shadow-color: rgba(255, 107, 53, 0.4);
+    --shadow-dark: rgba(0, 0, 0, 0.8);
+}
+
+/* Reset y estilos base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    color: var(--text-dark);
+    background: 
+        linear-gradient(135deg, rgba(0, 0, 0, 0.9) 0%, rgba(30, 30, 30, 0.85) 100%),
+        url('../img/The_Big_Bang_Theory_(Official_Title_Card).png') center/cover no-repeat fixed;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Cabecera */
+.header {
+    background: linear-gradient(135deg, var(--primary-red-orange), var(--primary-orange), var(--primary-yellow));
+    color: var(--text-light);
+    padding: 1rem 0;
+    box-shadow: 0 2px 10px var(--shadow-color);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+}
+
+.header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-img {
+    height: 50px;
+    width: auto;
+    transition: transform 0.3s ease;
+    filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.3));
+}
+
+.logo h1 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.navigation {
+    position: relative;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-link {
+    color: var(--text-light);
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    background: linear-gradient(45deg, var(--primary-yellow), var(--primary-orange));
+    color: var(--text-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px var(--shadow-color);
+}
+
+/* Dropdown Menu */
+.dropdown {
+    position: relative;
+}
+
+.dropdown-toggle {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.dropdown-toggle i {
+    font-size: 0.8rem;
+    transition: transform 0.3s ease;
+}
+
+.dropdown:hover .dropdown-toggle i {
+    transform: rotate(180deg);
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: linear-gradient(135deg, var(--primary-red-orange), var(--primary-orange), var(--primary-yellow));
+    min-width: 200px;
+    border-radius: 10px;
+    box-shadow: 0 8px 25px var(--shadow-color);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    z-index: 1000;
+    list-style: none;
+    padding: 0.5rem 0;
+}
+
+.dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.dropdown-link {
+    display: block;
+    color: var(--text-light);
+    text-decoration: none;
+    padding: 0.7rem 1.2rem;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.dropdown-link:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: var(--text-dark);
+    padding-left: 1.5rem;
+}
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 4px;
+}
+
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    transition: 0.3s;
+}
+
+/* Contenido Principal */
+.main-content {
+    padding: 4rem 0;
+    flex: 1;
+}
+
+.main-content .container {
+    background: rgba(30, 30, 30, 0.95);
+    border-radius: 20px;
+    padding: 3rem 2rem;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 30px var(--shadow-dark);
+    border: 1px solid rgba(255, 107, 53, 0.2);
+}
+
+.content-wrapper {
+    display: flex;
+    gap: 3rem;
+    align-items: center;
+}
+
+.content-left,
+.content-right {
+    flex: 1;
+}
+
+.main-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--primary-red-orange), var(--primary-orange), var(--primary-yellow));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+}
+
+.main-text {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+    text-align: justify;
+}
+
+.hero-image {
+    text-align: center;
+    position: relative;
+}
+
+.bazinga-img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease;
+}
+
+.bazinga-img:hover {
+    transform: scale(1.05);
+}
+
+/* Estilos para la imagen SVG */
+.hero-image {
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Pie de página */
+.footer {
+    background: var(--background-dark);
+    color: var(--text-light);
+    padding: 2rem 0;
+    backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(255, 107, 53, 0.3);
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.legal {
+    flex: 1;
+}
+
+.legal p {
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+.social-media {
+    display: flex;
+    gap: 1rem;
+}
+
+.social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    background: transparent;
+    color: var(--text-secondary);
+    border: 2px solid var(--text-secondary);
+    border-radius: 12px;
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.social-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transition: left 0.6s;
+}
+
+.social-link:hover::before {
+    left: 100%;
+}
+
+.social-link:hover {
+    color: var(--primary-orange);
+    border-color: var(--primary-orange);
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 8px 25px rgba(247, 147, 30, 0.3);
+}
+
+/* Logo personalizado de X */
+.x-logo {
+    font-family: 'Times New Roman', serif;
+    font-weight: bold;
+    font-size: 1.3rem;
+    font-style: normal;
+}
+
+/* Específicos para cada red social */
+.social-link[aria-label="Twitter"]:hover {
+    color: #ffffff;
+    border-color: #ffffff;
+    box-shadow: 0 8px 25px rgba(255, 255, 255, 0.3);
+}
+
+.social-link[aria-label="Instagram"]:hover {
+    color: #e4405f;
+    border-color: #e4405f;
+    box-shadow: 0 8px 25px rgba(228, 64, 95, 0.3);
+}
+
+.social-link[aria-label="Facebook"]:hover {
+    color: #1877f2;
+    border-color: #1877f2;
+    box-shadow: 0 8px 25px rgba(24, 119, 242, 0.3);
+}
+
+.social-link[aria-label="YouTube"]:hover {
+    color: #ff0000;
+    border-color: #ff0000;
+    box-shadow: 0 8px 25px rgba(255, 0, 0, 0.3);
+}
+
+/* Animación de entrada para iconos sociales */
+.social-link {
+    animation: fadeInScale 0.6s ease-out;
+    animation-delay: calc(0.1s * var(--index, 0));
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Efecto de focus para accesibilidad */
+.social-link:focus {
+    outline: 2px solid var(--primary-orange);
+    outline-offset: 2px;
+}
+
+/* Media Queries para Responsive Design */
+
+/* Tablet y pantallas medianas */
+@media (max-width: 1024px) {
+    .container {
+        padding: 0 15px;
+    }
+    
+    .main-content .container {
+        padding: 2.5rem 1.5rem;
+    }
+    
+    .content-wrapper {
+        gap: 2rem;
+    }
+    
+    .episodes-grid {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 1.5rem;
+    }
+}
+
+/* Móviles grandes y tablets pequeñas */
+@media (max-width: 768px) {
+    .header .container {
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .logo-img {
+        height: 40px;
+    }
+    
+    .logo h1 {
+        font-size: 1.4rem;
+    }
+    
+    /* Menú de navegación móvil */
+    .nav-menu {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: linear-gradient(135deg, var(--primary-red-orange), var(--primary-orange), var(--primary-yellow));
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 2rem;
+        z-index: 9999;
+        backdrop-filter: blur(10px);
+    }
+    
+    .nav-menu.active {
+        display: flex;
+        animation: slideInFromTop 0.3s ease-out;
+    }
+    
+    .nav-menu li {
+        margin: 1rem 0;
+        opacity: 0;
+        transform: translateY(20px);
+        animation: fadeInUp 0.3s ease-out forwards;
+        animation-delay: calc(0.1s * var(--item-index, 0));
+    }
+    
+    .nav-link {
+        font-size: 1.5rem;
+        padding: 1rem 2rem;
+        border-radius: 15px;
+        text-align: center;
+        min-width: 200px;
+    }
+    
+    /* Hamburger mejorado */
+    .hamburger {
+        display: flex;
+        flex-direction: column;
+        cursor: pointer;
+        padding: 10px;
+        z-index: 10000;
+        position: relative;
+    }
+    
+    .hamburger span {
+        width: 25px;
+        height: 3px;
+        background-color: white;
+        margin: 3px 0;
+        transition: 0.3s;
+        border-radius: 3px;
+    }
+    
+    /* Animación del hamburger */
+    .hamburger.active span:nth-child(1) {
+        transform: rotate(-45deg) translate(-5px, 6px);
+    }
+    
+    .hamburger.active span:nth-child(2) {
+        opacity: 0;
+    }
+    
+    .hamburger.active span:nth-child(3) {
+        transform: rotate(45deg) translate(-5px, -6px);
+    }
+    
+    /* Dropdown para móviles */
+    .dropdown-menu {
+        position: static;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        box-shadow: none;
+        background: rgba(255, 255, 255, 0.15);
+        margin-top: 0.5rem;
+        border-radius: 12px;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease;
+        backdrop-filter: blur(5px);
+    }
+    
+    .dropdown:hover .dropdown-menu,
+    .dropdown.active .dropdown-menu {
+        max-height: 500px;
+    }
+    
+    .dropdown-link {
+        font-size: 1.2rem;
+        padding: 0.8rem 1.5rem;
+        color: white;
+        text-align: center;
+    }
+    
+    .dropdown-toggle {
+        font-size: 1.5rem;
+    }
+    
+    /* Contenido principal móvil */
+    .content-wrapper {
+        flex-direction: column;
+        text-align: center;
+        gap: 2rem;
+    }
+    
+    .main-title {
+        font-size: 2rem;
+        line-height: 1.1;
+    }
+    
+    .main-text {
+        text-align: justify;
+        font-size: 1rem;
+    }
+    
+    .main-content .container {
+        padding: 2rem 1rem;
+        margin: 0 10px;
+    }
+    
+    /* Episodes grid móvil */
+    .episodes-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .episode-image {
+        height: 180px;
+    }
+    
+    /* Footer móvil */
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 1.5rem;
+    }
+    
+    .social-media {
+        justify-content: center;
+        gap: 0.8rem;
+    }
+    
+    .social-link {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+        border-radius: 10px;
+    }
+}
+
+/* Móviles pequeños */
+@media (max-width: 480px) {
+    .container {
+        padding: 0 10px;
+    }
+    
+    .logo-img {
+        height: 35px;
+    }
+    
+    .main-content {
+        padding: 1.5rem 0;
+    }
+    
+    .main-content .container {
+        margin: 0 5px;
+        padding: 1.5rem 1rem;
+    }
+    
+    .main-title {
+        font-size: 1.6rem;
+    }
+    
+    .main-text {
+        font-size: 0.95rem;
+    }
+    
+    .nav-link {
+        font-size: 1.3rem;
+        padding: 0.8rem 1.5rem;
+        min-width: 180px;
+    }
+    
+    .episode-image {
+        height: 160px;
+    }
+    
+    .social-link {
+        width: 38px;
+        height: 38px;
+        font-size: 0.9rem;
+    }
+    
+    .x-logo {
+        font-size: 1.1rem;
+    }
+    
+    /* Temporadas responsive */
+    .season-title {
+        font-size: 1.6rem;
+    }
+    
+    .intro-subtitle {
+        font-size: 1.2rem;
+    }
+    
+    .season-info {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+    
+    .season-stats {
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+    
+    .stat {
+        min-width: 60px;
+        padding: 0.6rem;
+    }
+    
+    .episodes-title {
+        font-size: 1.4rem;
+    }
+}
+
+
+
+/* Animaciones adicionales */
+.main-title {
+    animation: fadeInUp 0.8s ease-out;
+}
+
+.main-text {
+    animation: fadeInUp 0.8s ease-out 0.2s both;
+}
+
+.hero-image {
+    animation: fadeInRight 0.8s ease-out 0.4s both;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInFromTop {
+    from {
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Estilos para páginas de temporadas */
+.season-intro {
+    margin-bottom: 3rem;
+}
+
+.season-title {
+    font-size: 3rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--primary-red-orange), var(--primary-orange), var(--primary-yellow));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.season-info {
+    display: flex;
+    gap: 3rem;
+    align-items: flex-start;
+    margin-bottom: 2rem;
+}
+
+.season-description {
+    flex: 2;
+}
+
+.season-poster {
+    flex: 1;
+    text-align: center;
+}
+
+.intro-subtitle {
+    font-size: 1.5rem;
+    color: var(--text-dark);
+    margin-bottom: 1rem;
+}
+
+.intro-text {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    text-align: justify;
+}
+
+.season-stats {
+    display: flex;
+    gap: 2rem;
+    justify-content: flex-start;
+}
+
+.stat {
+    text-align: center;
+    padding: 1rem;
+    background: linear-gradient(45deg, var(--primary-orange), var(--primary-yellow));
+    border-radius: 10px;
+    min-width: 80px;
+}
+
+.stat-number {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--text-dark);
+}
+
+.stat-label {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--text-dark);
+    opacity: 0.8;
+}
+
+.poster-img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px var(--shadow-color);
+}
+
+/* Placeholder para poster de temporada */
+.season-poster::before {
+    content: "TEMPORADA 1";
+    display: block;
+    width: 100%;
+    height: 400px;
+    background: linear-gradient(45deg, var(--primary-red-orange), var(--primary-orange), var(--primary-yellow));
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    font-weight: bold;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    box-shadow: 0 10px 30px var(--shadow-color);
+    margin-bottom: 1rem;
+}
+
+/* Sección de episodios */
+.episodes-section {
+    margin-top: 4rem;
+}
+
+.episodes-title {
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.episodes-note {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    text-align: center;
+    margin-bottom: 2rem;
+    font-style: italic;
+    opacity: 0.9;
+}
+
+.episodes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 1rem 0;
+}
+
+.episode-card {
+    background: var(--background-card);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px var(--shadow-dark);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 107, 53, 0.1);
+}
+
+.episode-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px var(--shadow-color);
+}
+
+.episode-image {
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+}
+
+.episode-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+    background: linear-gradient(135deg, #FF6B23, #2C3E50);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+/* Fallback para imágenes que no cargan */
+.episode-img::before {
+    content: attr(alt);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.episode-img:not([src]):before,
+.episode-img[src=""]:before,
+.episode-img[src$="404"]:before {
+    opacity: 1;
+}
+
+.episode-card:hover .episode-img {
+    transform: scale(1.1);
+}
+
+/* Placeholder para imágenes de episodios */
+.episode-image::before {
+    content: "EP";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, var(--primary-orange), var(--primary-yellow));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    font-weight: bold;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    z-index: 1;
+}
+
+.episode-overlay {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: var(--primary-red-orange);
+    color: white;
+    padding: 0.5rem;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 0.9rem;
+    z-index: 2;
+}
+
+.episode-info {
+    padding: 1.5rem;
+}
+
+.episode-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 0.5rem;
+    line-height: 1.3;
+}
+
+.episode-date {
+    font-size: 0.9rem;
+    color: var(--primary-orange);
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+
+.episode-synopsis {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+/* Logo como enlace */
+.logo a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.logo a:hover .logo-img,
+.logo:hover .logo-img {
+    transform: scale(1.05);
+}
+
+.logo a:hover h1 {
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+}
+
+.coming-soon {
+    text-align: center;
+    margin-top: 3rem;
+    padding: 2rem;
+    background: linear-gradient(45deg, var(--primary-orange), var(--primary-yellow));
+    border-radius: 15px;
+    color: var(--text-dark);
+    font-weight: 500;
+    font-size: 1.1rem;
+}
+
+.season-complete {
+    text-align: center;
+    margin-top: 3rem;
+    padding: 2rem;
+    background: linear-gradient(45deg, #28a745, #20c997);
+    border-radius: 15px;
+    color: white;
+    font-weight: 500;
+    font-size: 1.1rem;
+    box-shadow: 0 8px 25px rgba(40, 167, 69, 0.3);
+}
+
+/* Estilos especiales para la temporada final */
+.special-episode {
+    position: relative;
+}
+
+.special-episode::before {
+    content: "FINAL DE SERIE";
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    background: linear-gradient(45deg, #ff6b35, #ff1744);
+    color: white;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-weight: bold;
+    z-index: 3;
+    box-shadow: 0 2px 10px rgba(255, 23, 68, 0.4);
+}
+
+.final-overlay {
+    background: linear-gradient(45deg, #ff6b35, #ff1744) !important;
+    font-size: 0.7rem !important;
+    font-weight: bold;
+}
+
+.final-season-tribute {
+    margin-top: 4rem;
+    padding: 3rem;
+    background: linear-gradient(135deg, rgba(255, 107, 53, 0.15), rgba(255, 204, 2, 0.15));
+    border-radius: 20px;
+    text-align: center;
+    border: 2px solid var(--primary-orange);
+    backdrop-filter: blur(10px);
+}
+
+.final-season-tribute h3 {
+    font-size: 2rem;
+    color: var(--primary-red-orange);
+    margin-bottom: 1.5rem;
+}
+
+.final-season-tribute p {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.final-season-tribute strong {
+    color: var(--primary-red-orange);
+    font-size: 1.2rem;
+}
+
+/* Responsive para páginas de temporadas */
+@media (max-width: 768px) {
+    .season-title {
+        font-size: 2rem;
+    }
+    
+    .season-info {
+        flex-direction: column;
+        gap: 2rem;
+    }
+    
+    .season-stats {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    
+    .episodes-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .episode-image {
+        height: 180px;
+    }
+}
+
+@media (max-width: 480px) {
+    .season-title {
+        font-size: 1.8rem;
+    }
+    
+    .intro-subtitle {
+        font-size: 1.3rem;
+    }
+    
+    .stat {
+        min-width: 70px;
+        padding: 0.8rem;
+    }
+    
+    .episodes-title {
+        font-size: 1.5rem;
+    }
+}
