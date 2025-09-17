@@ -3,14 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Página de contacto de The Big Bang Theory - Envíanos tus comentarios y preguntas">
     <title>Contacto - The Big Bang Theory</title>
     <link rel="stylesheet" href="css/estilos.css">
+    <!-- Font Awesome CDN con fallback -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" 
+          integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" 
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- Para usar con API key real, descomenta la siguiente línea y agrega tu API key -->
     <!-- <script async defer src="https://maps.googleapis.com/maps/api/js?key=TU_API_KEY_AQUI&callback=initMap"></script> -->
     
     <!-- Versión alternativa con OpenStreetMap (funciona sin API key) -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" 
+          integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" 
+          crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+            integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+            crossorigin=""></script>
 </head>
 <body>
     <!-- Cabecera -->
@@ -236,6 +246,37 @@
     </footer>
 
     <script src="js/main.js"></script>
+    
+    <!-- Verificación de dependencias externas -->
+    <script>
+        // Verificar si Font Awesome se cargó correctamente
+        document.addEventListener('DOMContentLoaded', function() {
+            const testIcon = document.createElement('i');
+            testIcon.className = 'fas fa-test';
+            testIcon.style.display = 'none';
+            document.body.appendChild(testIcon);
+            
+            setTimeout(() => {
+                const styles = getComputedStyle(testIcon, ':before');
+                if (!styles.content || styles.content === 'none') {
+                    console.warn('Font Awesome no se cargó correctamente');
+                    // Fallback: usar caracteres Unicode en lugar de iconos
+                    const icons = document.querySelectorAll('.fas, .fab');
+                    icons.forEach(icon => {
+                        if (icon.classList.contains('fa-envelope')) icon.textContent = '✉';
+                        if (icon.classList.contains('fa-phone')) icon.textContent = '☎';
+                        if (icon.classList.contains('fa-map-marker-alt')) icon.textContent = '📍';
+                        if (icon.classList.contains('fa-clock')) icon.textContent = '⏰';
+                        if (icon.classList.contains('fa-paper-plane')) icon.textContent = '✈';
+                        if (icon.classList.contains('fa-crosshairs')) icon.textContent = '🎯';
+                        if (icon.classList.contains('fa-spinner')) icon.textContent = '⟳';
+                    });
+                }
+                document.body.removeChild(testIcon);
+            }, 100);
+        });
+    </script>
+    
     <script>
         // Variables globales para el mapa
         let map;
