@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto - The Big Bang Theory</title>
+    <link rel="stylesheet" href="css/estilos.css">
+    <!-- Para usar con API key real, descomenta la siguiente línea y agrega tu API key -->
+    <!-- <script async defer src="https://maps.googleapis.com/maps/api/js?key=TU_API_KEY_AQUI&callback=initMap"></script> -->
+    
+    <!-- Versión alternativa con OpenStreetMap (funciona sin API key) -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+</head>
+<body>
+    <!-- Cabecera -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="img/logo.png" alt="The Big Bang Theory Logo" class="logo-img">
+                </a>
+            </div>
+            <nav class="navigation">
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link">Inicio</a></li>
+                    <li class="dropdown">
+                        <a href="#temporadas" class="nav-link dropdown-toggle">
+                            Temporadas <i class="fas fa-chevron-down"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="temporada1.html" class="dropdown-link">Temporada 1 (2007)</a></li>
+                            <li><a href="temporada2.html" class="dropdown-link">Temporada 2 (2008)</a></li>
+                            <li><a href="temporada3.html" class="dropdown-link">Temporada 3 (2009)</a></li>
+                            <li><a href="temporada4.html" class="dropdown-link">Temporada 4 (2010)</a></li>
+                            <li><a href="temporada5.html" class="dropdown-link">Temporada 5 (2011)</a></li>
+                            <li><a href="temporada6.html" class="dropdown-link">Temporada 6 (2012)</a></li>
+                            <li><a href="temporada7.html" class="dropdown-link">Temporada 7 (2013)</a></li>
+                            <li><a href="temporada8.html" class="dropdown-link">Temporada 8 (2014)</a></li>
+                            <li><a href="temporada9.html" class="dropdown-link">Temporada 9 (2015)</a></li>
+                            <li><a href="temporada10.html" class="dropdown-link">Temporada 10 (2016)</a></li>
+                            <li><a href="temporada11.html" class="dropdown-link">Temporada 11 (2017)</a></li>
+                            <li><a href="temporada12.html" class="dropdown-link">Temporada 12 (2018)</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#galeria" class="nav-link">Galería</a></li>
+                    <li><a href="#bazinga" class="nav-link">Bazinga!</a></li>
+                    <li><a href="contacto.html" class="nav-link active">Contacto</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Contenido Principal -->
+    <main class="main-content">
+        <div class="container">
+            <div class="contact-wrapper">
+                <div class="contact-header">
+                    <h1 class="contact-title">¡Contáctanos!</h1>
+                    <p class="contact-subtitle">
+                        ¿Tienes alguna pregunta sobre The Big Bang Theory? ¿Quieres compartir tu episodio favorito? 
+                        ¡Nos encantaría saber de ti! Envíanos un mensaje y te responderemos pronto.
+                    </p>
+                </div>
+
+                <div class="contact-content">
+                    <div class="contact-form-section">
+                        <h2 class="form-title">Envíanos un mensaje</h2>
+                        <form class="contact-form" id="contactForm">
+                            <div class="form-group">
+                                <label for="nombre" class="form-label">Nombre completo *</label>
+                                <input type="text" id="nombre" name="nombre" class="form-input" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email" class="form-label">Correo electrónico *</label>
+                                <input type="email" id="email" name="email" class="form-input" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="asunto" class="form-label">Asunto *</label>
+                                <select id="asunto" name="asunto" class="form-select" required>
+                                    <option value="">Selecciona un asunto</option>
+                                    <option value="pregunta">Pregunta general</option>
+                                    <option value="episodio">Episodio favorito</option>
+                                    <option value="personaje">Personaje favorito</option>
+                                    <option value="ciencia">Pregunta científica</option>
+                                    <option value="sugerencia">Sugerencia</option>
+                                    <option value="otro">Otro</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="temporada" class="form-label">Temporada favorita</label>
+                                <select id="temporada" name="temporada" class="form-select">
+                                    <option value="">Selecciona una temporada</option>
+                                    <option value="1">Temporada 1 (2007)</option>
+                                    <option value="2">Temporada 2 (2008)</option>
+                                    <option value="3">Temporada 3 (2009)</option>
+                                    <option value="4">Temporada 4 (2010)</option>
+                                    <option value="5">Temporada 5 (2011)</option>
+                                    <option value="6">Temporada 6 (2012)</option>
+                                    <option value="7">Temporada 7 (2013)</option>
+                                    <option value="8">Temporada 8 (2014)</option>
+                                    <option value="9">Temporada 9 (2015)</option>
+                                    <option value="10">Temporada 10 (2016)</option>
+                                    <option value="11">Temporada 11 (2017)</option>
+                                    <option value="12">Temporada 12 (2018)</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="mensaje" class="form-label">Mensaje *</label>
+                                <textarea id="mensaje" name="mensaje" class="form-textarea" rows="5" 
+                                    placeholder="Cuéntanos qué piensas sobre la serie, tu episodio favorito, o cualquier cosa que quieras compartir..." required></textarea>
+                            </div>
+
+                            <div class="form-group checkbox-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="newsletter" name="newsletter" class="form-checkbox">
+                                    <span class="checkmark"></span>
+                                    Quiero recibir noticias sobre The Big Bang Theory
+                                </label>
+                            </div>
+
+                            <button type="submit" class="form-submit">
+                                <i class="fas fa-paper-plane"></i>
+                                Enviar mensaje
+                            </button>
+                        </form>
+                    </div>
+
+                    <div class="contact-info-section">
+                        <h2 class="info-title">Información de contacto</h2>
+                        <div class="contact-info">
+                            <div class="info-item">
+                                <i class="fas fa-envelope"></i>
+                                <div>
+                                    <h3>Email</h3>
+                                    <p>contacto@bigbangtheory.com</p>
+                                </div>
+                            </div>
+
+                            <div class="info-item">
+                                <i class="fas fa-phone"></i>
+                                <div>
+                                    <h3>Teléfono</h3>
+                                    <p>+1 (555) 123-BAZINGA</p>
+                                </div>
+                            </div>
+
+                            <div class="info-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <div>
+                                    <h3>Dirección</h3>
+                                    <p>2311 North Los Robles Avenue<br>Pasadena, CA 91101</p>
+                                </div>
+                            </div>
+
+                            <div class="info-item">
+                                <i class="fas fa-clock"></i>
+                                <div>
+                                    <h3>Horario de atención</h3>
+                                    <p>Lunes a Viernes: 9:00 AM - 6:00 PM<br>Sábados: 10:00 AM - 4:00 PM</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="social-contact">
+                            <h3>Síguenos en redes sociales</h3>
+                            <div class="social-links">
+                                <a href="https://twitter.com/bigbangtheory" target="_blank" class="social-link" aria-label="Twitter">
+                                    <span class="x-logo">𝕏</span>
+                                </a>
+                                <a href="https://www.instagram.com/bigbangtheory/" target="_blank" class="social-link" aria-label="Instagram">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                                <a href="https://www.facebook.com/TheBigBangTheory" target="_blank" class="social-link" aria-label="Facebook">
+                                    <i class="fab fa-facebook"></i>
+                                </a>
+                                <a href="https://www.youtube.com/c/TheBigBangTheory" target="_blank" class="social-link" aria-label="YouTube">
+                                    <i class="fab fa-youtube"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mapa de ancho completo debajo del contenido -->
+                <div class="full-width-map-section">
+                    <h2 class="map-title">Nuestra ubicación</h2>
+                    <div class="full-width-map-container">
+                        <div id="map" class="full-width-map"></div>
+                        <div class="map-info">
+                            <p><i class="fas fa-map-marker-alt"></i> 2311 North Los Robles Avenue, Pasadena, CA 91101</p>
+                            <button id="getLocationBtn" class="location-btn">
+                                <i class="fas fa-crosshairs"></i>
+                                Mi ubicación actual
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Pie de página -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="legal">
+                    <p>&copy; 2024 The Big Bang Theory. Todos los derechos reservados.</p>
+                    <p>Una producción de Chuck Lorre Productions y Warner Bros. Television</p>
+                </div>
+                <div class="social-media">
+                    <a href="https://twitter.com/bigbangtheory" target="_blank" class="social-link social-link-x" aria-label="Twitter" style="--index: 1">
+                        <span class="x-logo">𝕏</span>
+                    </a>
+                    <a href="https://www.instagram.com/bigbangtheory/" target="_blank" class="social-link" aria-label="Instagram" style="--index: 2">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://www.facebook.com/TheBigBangTheory" target="_blank" class="social-link" aria-label="Facebook" style="--index: 3">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                    <a href="https://www.youtube.com/c/TheBigBangTheory" target="_blank" class="social-link" aria-label="YouTube" style="--index: 4">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Variables globales para el mapa
+        let map;
+        let userMarker;
+        let officeMarker;
+        
+        // Coordenadas de la oficina de TBBT (Pasadena, CA)
+        const officeLocation = [34.1478, -118.1445];
+        
+        // Inicializar el mapa cuando se carga la página
+        document.addEventListener('DOMContentLoaded', function() {
+            initMap();
+        });
+        
+        // Inicializar el mapa con Leaflet
+        function initMap() {
+            // Crear el mapa centrado en Pasadena
+            map = L.map('map').setView(officeLocation, 15);
+            
+            // Agregar capa de tiles (OpenStreetMap)
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '© OpenStreetMap contributors',
+                maxZoom: 19
+            }).addTo(map);
+            
+            // Crear icono personalizado para TBBT
+            const tbbtIcon = L.divIcon({
+                className: 'custom-div-icon',
+                html: `
+                    <div style="
+                        background: #ff6b35;
+                        width: 40px;
+                        height: 40px;
+                        border-radius: 50%;
+                        border: 3px solid white;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        color: white;
+                        font-weight: bold;
+                        font-size: 12px;
+                        box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+                    ">
+                        TBBT
+                    </div>
+                `,
+                iconSize: [40, 40],
+                iconAnchor: [20, 20]
+            });
+            
+            // Marcador de la oficina
+            officeMarker = L.marker(officeLocation, { icon: tbbtIcon }).addTo(map);
+            
+            // Popup para la oficina
+            officeMarker.bindPopup(`
+                <div style="color: #333; font-family: Arial, sans-serif; min-width: 200px;">
+                    <h3 style="margin: 0 0 10px 0; color: #ff6b35;">The Big Bang Theory</h3>
+                    <p style="margin: 0; font-size: 14px;">2311 North Los Robles Avenue<br>Pasadena, CA 91101</p>
+                    <p style="margin: 5px 0 0 0; font-size: 12px; color: #666;">¡Bazinga! Aquí es donde la magia sucede</p>
+                </div>
+            `);
+            
+            // Intentar obtener la ubicación del usuario al cargar
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(
+                    (position) => {
+                        const userLocation = [position.coords.latitude, position.coords.longitude];
+                        addUserMarker(userLocation);
+                    },
+                    (error) => {
+                        console.log('No se pudo obtener la ubicación:', error);
+                    }
+                );
+            }
+        }
+        
+        // Agregar marcador del usuario
+        function addUserMarker(location) {
+            if (userMarker) {
+                map.removeLayer(userMarker);
+            }
+            
+            // Crear icono personalizado para el usuario
+            const userIcon = L.divIcon({
+                className: 'custom-div-icon',
+                html: `
+                    <div style="
+                        background: #ffcc02;
+                        width: 30px;
+                        height: 30px;
+                        border-radius: 50%;
+                        border: 3px solid white;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        color: white;
+                        font-weight: bold;
+                        font-size: 10px;
+                        box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+                    ">
+                        👤
+                    </div>
+                `,
+                iconSize: [30, 30],
+                iconAnchor: [15, 15]
+            });
+            
+            userMarker = L.marker(location, { icon: userIcon }).addTo(map);
+            
+            // Popup para el usuario
+            userMarker.bindPopup(`
+                <div style="color: #333; font-family: Arial, sans-serif; min-width: 150px;">
+                    <h3 style="margin: 0 0 10px 0; color: #ffcc02;">Tu ubicación</h3>
+                    <p style="margin: 0; font-size: 14px;">Lat: ${location[0].toFixed(6)}<br>Lng: ${location[1].toFixed(6)}</p>
+                </div>
+            `);
+        }
+        
+        // Funcionalidad del botón de ubicación
+        document.getElementById('getLocationBtn').addEventListener('click', function() {
+            if (!navigator.geolocation) {
+                alert('La geolocalización no es compatible con este navegador.');
+                return;
+            }
+            
+            this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Obteniendo ubicación...';
+            this.disabled = true;
+            
+            navigator.geolocation.getCurrentPosition(
+                (position) => {
+                    const userLocation = [position.coords.latitude, position.coords.longitude];
+                    
+                    addUserMarker(userLocation);
+                    map.setView(userLocation, 16);
+                    
+                    this.innerHTML = '<i class="fas fa-crosshairs"></i> Mi ubicación actual';
+                    this.disabled = false;
+                },
+                (error) => {
+                    let errorMessage = 'No se pudo obtener tu ubicación.';
+                    switch(error.code) {
+                        case error.PERMISSION_DENIED:
+                            errorMessage = 'Permiso de ubicación denegado.';
+                            break;
+                        case error.POSITION_UNAVAILABLE:
+                            errorMessage = 'Ubicación no disponible.';
+                            break;
+                        case error.TIMEOUT:
+                            errorMessage = 'Tiempo de espera agotado.';
+                            break;
+                    }
+                    alert(errorMessage);
+                    
+                    this.innerHTML = '<i class="fas fa-crosshairs"></i> Mi ubicación actual';
+                    this.disabled = false;
+                }
+            );
+        });
+        
+        // Funcionalidad del formulario de contacto
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Obtener datos del formulario
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            // Validación básica
+            if (!data.nombre || !data.email || !data.asunto || !data.mensaje) {
+                alert('Por favor, completa todos los campos obligatorios.');
+                return;
+            }
+            
+            // Simular envío (aquí normalmente enviarías los datos a un servidor)
+            alert('¡Gracias por tu mensaje! Te responderemos pronto. ¡Bazinga!');
+            
+            // Limpiar formulario
+            this.reset();
+        });
+    </script>
+</body>
+</html>

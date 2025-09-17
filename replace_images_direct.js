@@ -37,5 +37,3 @@ document.querySelectorAll('img[src*="episodes/"]').forEach(img => {
 
 console.log('✅ Reemplazo de imágenes completado');
 
-
-

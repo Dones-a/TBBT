@@ -48,5 +48,3 @@ del create_svgs.ps1
 
 echo ¡Completado! Archivos SVG creados en img\episodes\
 
-
-
